@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEIW - PWA | Miniprojeto: SPA</title>
+    <link rel="icon" type="image/x-icon" href="assets\favicon.ico">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <h1 class="center">{{msg}}</h1>        
+        <router-link to="/"><img class="imgTR" src="assets\TR.jpg" alt="TR"></router-link>
+        <ul class="nav">
+            <li>
+                <router-link to="/Who">Quem sou eu?</router-link>
+            </li>
+            <li>
+                <router-link to="/What">O que faço?</router-link>
+            </li>
+            <li>
+                <router-link to="/Hobbies">Hobbies</router-link>
+            </li>
+        </ul>
+        <router-view></router-view>
+    </div>
+    <script>
+        var Who = { 
+            template:
+                `<p>Tiago Romão, 36 anos e vivo no Porto.</p>` 
+        }
+        var What = { 
+            template:
+                `<div class="row" style>
+                    <div class="column">
+                        <p>Licenciado em Bioinformática, 13 anos de experiência na área de tecnologia.<br>Atualmente trabalho como LMS Specialist.</p>
+                    </div>
+                    <div class="column">
+                        <p>Trabalhei como Helpdesk, Webdesigner, Consultor Informático, IT Specialist e já criei uma empresa de consultoria informática.</p>
+                    </div>
+                </div>`
+        }
+        var Hobbies = { 
+            template:
+                `<div class="row">
+                    <div class="column">
+                        <img src="assets/HEMA.jpg"  alt="Hobbies" style="float: right">
+                    </div>
+                    <div class="column">
+                        <p>Hobbies: Sou um viciado em História nomeadamente o período clássico e medieval; fui praticante de HEMA, esgrima medieval.
+                        </p>
+                    </div>
+                </div>`
+        }
+        var router = new VueRouter({
+            routes:[
+                { path: '/Who', component: Who },
+                { path: '/What', component: What },
+                { path: '/Hobbies', component: Hobbies }
+            ]
+        }); 
+        var app = new Vue({
+            el: "#app",
+            router: router,
+            data:{
+                msg: "Tiago Romão - 75309"
+            }
+        });
+    </script>
+    <style>
+        body {
+            background-color:#eeeeee;
+        }
+        #app {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            color: black;
+            size: 100%;
+        }
+        #nav {
+            padding: 30px;
+        }
+        a {
+            font-weight: bold;
+            font-size: 48px;
+            color:darkgoldenrod;
+        }
+        a.router-link-exact-active {
+            color:firebrick;
+        }
+        h1 {
+            margin: 40px 0 0;
+            padding-bottom: 50px;
+            color: chocolate;
+            font-size: 64px ;
+        }
+        p{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 24px;
+        }
+        ul {
+            list-style-type: none; 
+            padding: 25px 0px 25px;
+        }
+        li {
+            width: 300px;
+            display: inline-block;
+            margin: 0 10px;
+            padding: 0px 50px 0px 50px;
+        }
+        img{
+            align-self: center;
+            width: 75%;
+            border: 5px solid goldenrod;
+        }
+        img.imgTR{
+            align-self: center;
+            width: 400px;
+            border: 5px solid goldenrod;
+            border-radius: 50%;
+        }
+        img.imgSocial{
+            align-self: center;
+            width: 25px;
+            border: 0px;
+        }
+        .row {
+            display: flex;
+        }
+        .column {
+            flex: 50%;
+            padding: 0px 5% 0px 5%;
+            font-size: 24px;
+            text-align: justify;
+        }
+        footer{
+            position:absolute;
+            bottom: 0%;
+            padding-top: 50px;
+            align-content: center;
+            width: 100%;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 24px;
+            text-align: center;
+        }
+    </style>
+</body>
+<footer>
+    <ul class="nav">
+        <li>
+            <a href="http://www.google.com"><img class="imgSocial" src="assets\g+.png" alt="googleplus" target="_blank" style="padding-right: 25px;"></a>
+            <a href="http://www.facebook.com"><img class="imgSocial" src="assets\fb.png" alt="facebook" target="_blank" style="padding-right: 25px;"></a>
+            <a href="http://www.twitter.com"><img class="imgSocial" src="assets\tw.png" alt="twitter" target="_blank" style="padding-right: 25px;"></a>
+            <a href="http://www.linkedin.com"><img class="imgSocial" src="assets\in.png" alt="linkedin" target="_blank" style="padding-right: 25px;"></a>
+            <a href="http://www.instagram.com"><img class="imgSocial" src="assets\ins.png" alt="instagram" target="_blank" style="padding-right: 25px;"></a>
+        </li>
+    </ul>
+</footer>
+</html>
